@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<movie_data>
+<title>movie data</title>
+	<movie id="1">
+		<sean_channel>
+			<name>Dr No</name>
+			<start_time>9.00am</start_time>
+			<end_time>11.00am</end_time>
+		</sean_channel>
+	</movie>
+	<movie id="2">
+		<roger_channel>
+			<name>Moonraker</name>
+			<start_time>8.00am</start_time>
+			<end_time>11.30am</end_time>
+		</roger_channel>
+	</movie>
+	<movie id="3">
+		<roger_channel>
+			<name>Moonraker 2</name>
+			<start_time>11.30am</start_time>
+			<end_time>2.30pm</end_time>
+		</roger_channel>
+	</movie>
+	<movie id="4">
+		<sean_channel>
+			<name>Thunderball</name>
+			<start_time>11.00am</start_time>
+			<end_time>1.30pm</end_time>
+		</sean_channel>
+	</movie>
+	<movie id="5">
+		<timothy_channel>
+			<name>Octopussy</name>
+			<start_time>1.00pm</start_time>
+			<end_time>2.40pm</end_time>
+		</timothy_channel>
+	</movie>
+</movie_data>

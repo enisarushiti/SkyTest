@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB"> 
+    <head>
+        <meta charset="utf-8">
+        <title>XML input form</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="XMLmain.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="getForm.js"></script>
+    </head>
+<body id="main">
+    <h3>Enter Film Information</h3>
+    <form action="javascript:getFormXml()">
+        Film Name: <input type="text" name="user"/><br/>
+        Start Time: <input type="text" name="firstname"/><br/>
+        End Time:   <input type="text" name="lastname"/><br/>
+        <input type="radio" name="actor" value="sean_channel"/>Sean Connery<br/>
+        <input type="radio" name="actor" value="george_channel"/>George Lazenby<br/>
+        <input type="radio" name="actor" value="roger_channel"/>Roger Moore<br/>
+        <input type="radio" name="actor" value="timothy_channel"/>Timothy Dalton<br/>
+        <input type="radio" name="actor" value="pierce_channel"/>Pierce Brosnan<br/>
+        <input type="radio" name="actor" value="daniel_channel"/>Daniel Craig<br/>
+         <hr/>
+        <input name="submit" type="submit" value="Submit"/> 
+    </form> 
+</body>
+
+
