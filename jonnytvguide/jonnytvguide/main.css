@@ -6,12 +6,13 @@
 }
 
 #guide{
-	width:100%;
+	width:200%;
 	height:100%;
 }
 
 .row{
 	height:calc(100%/7);
+
 }
 
 .box{
@@ -36,13 +37,13 @@
 	background: #778899;
 	float: left;
 	text-align: center;
-	position: relative;
+	position: fixed;
 	z-index: 1;
 }
 
 .content{
 	height: 100%;
-	width: 82%;
+	width: 91%;
 	float:right;
 	display: inline;
 	position: relative;
@@ -58,7 +59,7 @@ div ul li {
     list-style: none;
     text-align: center;
     box-sizing: border-box;
-    width:calc(100%/7);
+    width:calc(100%/15);
     float:left;
     position: absolute;
 }
@@ -73,13 +74,37 @@ top: 50%;
 transform: translateY(-50%);
 } 
 
+.titleText{
+	display: relative;
+}
+
+div .titleText{
+	display:relative;
+
+}
 
 ul{
 	height: 100%;
 }
 
 
+.table {
+    height: calc(100%/7);
+    display:table;
+}
 
+.tableContent {
+    height: 100%;
+    display:table;
+}
+
+.cell {
+    display:table-cell;
+    vertical-align:middle;
+}
+.childcentereddiv {
+    text-align: center;
+}
 
 /*make background 'cover style' for various OS*/
 html,body{
@@ -89,4 +114,6 @@ html,body{
   padding: 0;
   margin: 0;
   font-family: 'CourierRegular', "Courier New", Courier, monospace !important;
+  max-width: 100%;
+  /*overflow-x: hidden;	*/
 }

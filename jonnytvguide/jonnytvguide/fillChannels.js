@@ -27,23 +27,23 @@ for (i=0;i<x.length;i++)
     var filmName = x[i].childNodes[0].nextSibling.getElementsByTagName("name")[0].childNodes[0].nodeValue;
     var startTimeInt = returnIntTime(startTime);
     var endTimeInt = returnIntTime(endTime);
-    var width = ((endTimeInt - startTimeInt)/7)*100;
-    var margLeft = ((1/14)*100)+(1/7)*(startTimeInt-9)*100;
-    $('#'+channel).append("<div id = \"" + i + "\" class = \"film box\" style=\"width:" + width + "%; margin-left:" + margLeft + "%;\"> "+ filmName + "</div>");
+    var width = ((endTimeInt - startTimeInt)/15)*100;
+    var margLeft = ((1/30)*100)+(1/15)*(startTimeInt-9)*100;
+    $('#'+channel).append("<div id = \"" + i + "\" class = \"film box table\" style=\"width:" + width + "%; margin-left:" + margLeft + "%;\"> <div class =\"cell\">"+ filmName + "</div></div>");
   }
 
 for(i=0; i<channels.length; i++){
   if(channelHasFilm[channels[i]] == null){
-    $('#'+channels[i]).append("<div class = \"film box\" style=\"width:100%; border:0px;\"> No Programmes Avaliable</div>");
+    $('#'+channels[i]).append("<div class = \"film box\" style=\"width:100%; border:0px; position:fixed; margin-left:-7%;\"> No Programmes Avaliable</div>");
   }
 }
 
 $("#1").click(function(){
-    console.log("clickk");
-  $(".content").animate({right:'-=50px'});
+    console.log("click1");
+  $(".content").animate({right:'+=100px'});
 }); 
 
 $("#2").click(function(){
-    console.log("clickk");
+    console.log("click2");
   $(".content").animate({right:'+=50px'});
 }); 
