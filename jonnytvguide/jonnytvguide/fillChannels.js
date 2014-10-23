@@ -41,19 +41,19 @@ for(i=0; i<channels.length; i++){
 
 
 
-function horizontalNavigation(position, event) {
-    $('html, body').animate({scrollLeft: position}, 400);
+function horizontalNavigation(position, event, time) {
+    $('html, body').animate({scrollLeft: position}, time);
     event.preventDefault();
 }
 
 $('#rightScroll').click(function (event) {
     var rightMov = $("body").scrollLeft() -200;
-    horizontalNavigation(rightMov, event);
+    horizontalNavigation(rightMov, event, 400);
 });
 
 $('#leftScroll').click(function (event) {
     var leftMov = $("body").scrollLeft() + 200;
-    horizontalNavigation(leftMov, event);
+    horizontalNavigation(leftMov, event, 400);
 });
 
 
@@ -62,7 +62,9 @@ $('.film:not(.empty)').click(function (event) {
 });
 
 $('#close').click(function (event) {
+       var currentPos = $("body").scrollLeft();
        $('#light').css('display','none');
+       horizontalNavigation(currentPos, event, 0);
 });
 
 
