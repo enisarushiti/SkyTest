@@ -29,21 +29,41 @@ for (i=0;i<x.length;i++)
     var endTimeInt = returnIntTime(endTime);
     var width = ((endTimeInt - startTimeInt)/15)*100;
     var margLeft = ((1/30)*100)+(1/15)*(startTimeInt-9)*100;
-    $('#'+channel).append("<div id = \"" + i + "\" class = \"film box\" style=\"width:" + width + "%; margin-left:" + margLeft + "%;\">"+ filmName + "</div>");
+    $('#'+channel).append("<div id = \"" + filmName + "\" class = \"film box\" style=\"width:" + width + "%; margin-left:" + margLeft + "%;\">"+ filmName + "</div>");
   }
 
 for(i=0; i<channels.length; i++){
   if(channelHasFilm[channels[i]] == null){
-    $('#'+channels[i]).append("<div class = \"film box table\" style=\"width:100%; border:0px;  margin-left:-30%;\">No Programmes Avaliable</div>");
+    $('#'+channels[i]).append("<div class = \"film box empty\" style=\"width:100%; border:0px;  margin-left:-30%;\">No Programmes Avaliable</div>");
   }
 }
 
-$("#1").click(function(){
-    console.log("click1");
-  $(".content").animate({right:'+=100px'});
-}); 
 
-$("#2").click(function(){
-    console.log("click2");
-  $(".content").animate({right:'+=50px'});
-}); 
+
+
+function horizontalNavigation(position, event) {
+    $('html, body').animate({scrollLeft: position}, 400);
+    event.preventDefault();
+}
+
+$('#rightScroll').click(function (event) {
+    var rightMov = $("body").scrollLeft() -200;
+    horizontalNavigation(rightMov, event);
+});
+
+$('#leftScroll').click(function (event) {
+    var leftMov = $("body").scrollLeft() + 200;
+    horizontalNavigation(leftMov, event);
+});
+
+
+$('.film:not(.empty)').click(function (event) {
+       $('#light').css('display','block');
+});
+
+$('#close').click(function (event) {
+       $('#light').css('display','none');
+});
+
+
+
