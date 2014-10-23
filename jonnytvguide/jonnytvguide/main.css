@@ -26,7 +26,6 @@
 .box.film{
 	text-align: center;
 	position: absolute;
-	height:100%;
 	border-top: 0px;
 	border-bottom: 0px;
 }
@@ -35,17 +34,17 @@
 .title{
 	width: 18%;
 	background: #778899;
-	float: left;
 	text-align: center;
 	position: fixed;
 	z-index: 1;
 }
 
 .content{
+	box-sizing: border-box;
+
+	margin-left: 9%;	
 	height: 100%;
 	width: 91%;
-	float:right;
-	display: inline;
 	position: relative;
 }
 
@@ -117,3 +116,4 @@ html,body{
   max-width: 100%;
   /*overflow-x: hidden;	*/
 }
+
