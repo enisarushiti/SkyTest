@@ -59,6 +59,8 @@ $('#leftScroll').click(function (event) {
 
 $('.film:not(.empty)').click(function (event) {
        $('#light').css('display','block');
+       $('#popUpText').empty();
+       $('#popUpText').append("<p style=\"color:black\">"+"The James Bond Movie "+this.id+" is set to be recorded</p>");
 });
 
 $('#close').click(function (event) {
