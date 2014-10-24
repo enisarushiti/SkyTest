@@ -105,6 +105,8 @@ ul{
 	height:33%;
 	float:left;
 }
+
+
 .modal_content{
 	display: none;
 	position: absolute;
@@ -130,12 +132,34 @@ left: 0px;
 width: 100%;
 height: 0px;
 overflow: visible;
-visibility: visible;
+visibility: hidden;
 display: block;
 z-index: 1000;
 
 }
 
+.scroll{
+	width: 4%;
+	top: 14.496%;
+	height: 85.714%;
+	background-color: black;
+	z-index: 2;
+	position:fixed;
+	opacity: 0.0;
+}
+
+.scroll.active{
+	opacity: 0.4;
+}
+
+.right{
+	margin-left:96%;
+}
+
+.left{
+	margin-left: 18%;
+	cursor: pointer;
+}
 
 /*make background 'cover style' for various OS*/
 html,body{

@@ -46,27 +46,38 @@ function horizontalNavigation(position, event, time) {
     event.preventDefault();
 }
 
-$('#rightScroll').click(function (event) {
-    var rightMov = $("body").scrollLeft() -200;
+
+$('.scroll.left').click(function (event) {
+    var screenWidth = $( window ).width();
+    var moveAmmount = ((screenWidth -((screenWidth/100)*18))/3.5);
+    var rightMov = $("body").scrollLeft() -moveAmmount;
     horizontalNavigation(rightMov, event, 400);
 });
 
-$('#leftScroll').click(function (event) {
-    var leftMov = $("body").scrollLeft() + 200;
+$('.scroll.right').click(function (event) {
+    var screenWidth = $( window ).width();
+    var moveAmmount = ((screenWidth -((screenWidth/100)*18))/3.5);
+    var leftMov = $("body").scrollLeft() + moveAmmount;
     horizontalNavigation(leftMov, event, 400);
 });
 
 
 $('.film:not(.empty)').click(function (event) {
-       $('#light').css('display','block');
+       $('#horizon').css('visibility','visible');
+       $('#popUpBox').css('display','block');
        $('#popUpText').empty();
        $('#popUpText').append("<p style=\"color:black\">"+"The James Bond Movie "+this.id+" is set to be recorded</p>");
 });
 
 $('#close').click(function (event) {
        var currentPos = $("body").scrollLeft();
-       $('#light').css('display','none');
+        $('#horizon').css('visibility','hidden');
+       $('#popUpBox').css('display','none');
        horizontalNavigation(currentPos, event, 0);
+});
+
+$('.scroll').hover(function() {  
+  $( this ).toggleClass( "active" ).next().stop( true, true ).slideToggle();
 });
 
 
