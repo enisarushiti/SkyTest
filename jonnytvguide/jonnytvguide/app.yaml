@@ -1,9 +1,29 @@
-application: blobstore
+application: jonnytvguide
 version: 1
 runtime: python27
 api_version: 1
 threadsafe: true
 
+
 handlers:
-- url: .*
-  script: main.app
+- url: /(.*\.(gif|png|jpg|ico|js|css|swf|xml))
+  static_files: \1
+  upload: (.*\.(gif|png|jpg|ico|js|css|swf|xml))
+
+- url: /(.*\.html)
+  static_files: \1
+  upload: index.html
+
+- url: /.*
+  script: main.application
+
+
+
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+
+

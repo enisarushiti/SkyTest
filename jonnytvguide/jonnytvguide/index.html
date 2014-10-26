@@ -1,46 +1,113 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB"> 
     <head>
-        <style>
-            form {
-                display: inline;
-            }
-            ul input {
-                font-size: 8px;
-            }
-        </style>
+        <meta charset="utf-8">
+        <title>SKY TV GUIDE</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="stylesheets/main.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     </head>
-    <body>
-        {% if user %}
-            Currently logged in as {{user.email}} - <a href="/account">log out</a>
 
-            <h3>Upload</h3>
-            <form id="form" action="{{upload_url}}" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <input type="submit" name="submit" value="Submit">
-            </form>
-        {% else %}
-            Not logged in - <a href="/account">log in</a>
-        {% endif %}
-        <h3>Files</h3>
-        <ul>
-        {% if not wrappers %}
-            No files have been uploaded
-        {% endif %}
-        {% for wrapper in wrappers %}
-            <li><a href="/serve/{{wrapper.blob.key}}">{{wrapper.blob.filename}}</a> ({{wrapper.blob.size}})
-            <small>uploaded {{wrapper.date|date:"D d M Y g:i:s A"}} by
-            {% ifequal wrapper.user user %}
-                you - <form action="/delete" method="post">
-                    <input type="hidden" name="key" value="{{wrapper.key}}">
-                    <input type="submit" value="Delete">
-            {% else %}
-                {{wrapper.user.email}}
-            {% endifequal %}</small>
-            </li>
-        {% endfor %}
-        </ul>
-        
+    <body id="main">
+        <div id = "guide">
+            <div class = "scroll left">
+            </div>
+            <div class = "scroll right">
+            </div>
 
-        <form>
+            <div id = "horizon">
+                <div id="popUpBox" class="modal_content">
+                    <img src = "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2013/12/sky_logo.jpg" id="skylogo">
+                    <br><p style = "color:black; font-size:30px"> Remote Record </p><br><br><br>
+                    <div id="popUpText"> </div>
+                    <a href = "" id="close">Close [X]</a><br>
+                </div>
+            </div>
+
+            <div class = "row">
+                  <div class="box title table" id="channel">
+                        <div class="cell">
+                            <div class="CenteredDiv">Channel</div>
+                       </div>
+                 </div>
+                <div class = "box content header">
+                    <ul>
+                        <li class="text">9AM</li>
+                        <li class="text">10AM</li>
+                        <li class="text">11AM</li>
+                        <li class="text">12PM</li>
+                        <li class="text">1PM</li>
+                        <li class="text">2PM</li>
+                        <li class="text">3PM</li>
+                        <li class="text">4PM</li>
+                        <li class="text">5PM</li>
+                        <li class="text">6PM</li>
+                        <li class="text">7PM</li>
+                        <li class="text">8PM</li>
+                        <li class="text">9PM</li>
+                        <li class="text">10PM</li>
+                        <li class="text">11PM</li>
+                    </ul>
+                </div>
+            </div>
+           <div class = "row">
+                <div class="box title table">
+                    <div class = "cell">
+                        <div class="titleText">Sean Connery</div>
+                    </div>
+                </div>
+                <div class = "box content" id="sean_channel">
+                </div>
+            </div>
+            <div class = "row">
+                <div class="box title table">
+                    <div class = "cell">
+                        <div class="titleText">George Lazenby</div>
+                    </div>
+                </div>
+                <div class = "box content" id="george_channel">
+                </div>
+            </div>
+            <div class = "row">
+                <div class="box title table">
+                    <div class = "cell">
+                      <div class="titleText">Roger Moore</div>
+                    </div>
+                </div>
+                <div class = "box content" id="roger_channel">
+                </div>
+            </div>
+            <div class = "row">
+                <div class="box title table">
+                    <div class = "cell">
+                        <div class="titleText">Timothy Dalton</div>
+                    </div>  
+                </div>
+                <div class = "box content" id="timothy_channel">
+                </div>
+            </div>
+            <div class = "row">
+                <div class="box title table">
+                    <div class = "cell">
+                        <div class="titleText">Pierce Brosnan</div>
+                    </div>
+                </div>
+                <div class = "box content" id="pierce_channel">
+                </div>
+            </div>
+            <div class = "row">
+                <div class="box title table">
+                    <div class = "cell">
+                        <div class="titleText">Daniel Craig</div>
+                    </div>
+                </div>
+                <div class = "box content" id="daniel_channel">
+                </div>
+            </div>
+        </div>
+        <script src = "js/fillChannels.js"></script>
+
     </body>
 </html>

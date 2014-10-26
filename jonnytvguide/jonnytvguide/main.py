@@ -1,75 +1,35 @@
+import cgi
+from google.appengine.api import users
+import webapp2
+from google.appengine.ext.webapp import template
 import os
 import urllib
+from google.appengine.ext import ndb
+import jinja2
 import webapp2
 
-from google.appengine.api import users
-from google.appengine.ext import blobstore, db, webapp
-from google.appengine.ext.webapp import blobstore_handlers, template
-from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
 
-class Wrapper(db.Model):
-	user = db.UserProperty(auto_current_user=True)
-	blob = blobstore.BlobReferenceProperty(required=True)
-	date = db.DateTimeProperty(auto_now_add=True)
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        if self.request.url.endswith('/'):
+            path = '%sindex.html'%self.request.url
 
-class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
-	def post(self):
-		try:
-			upload_files = self.get_uploads('file')
-			if len(upload_files) > 0:
-				blob_info = upload_files[0]
-				Wrapper(blob=blob_info.key()).put()
-			self.redirect('/')
-		except CapabilityDisabledError:
-			self.response.out.write('Uploading disabled')
+        self.redirect(path)
 
-class ServeHandler(blobstore_handlers.BlobstoreDownloadHandler):
-    def get(self, resource):
-        resource = str(urllib.unquote(resource))
-        blob_info = blobstore.BlobInfo.get(resource)
-        self.send_blob(blob_info)
+    def post(self):
+        self.get()
 
-class DeleteHandler(webapp2.RequestHandler):
-	def post(self):
-		try:
-			key = self.request.get("key")
-			wrapper = Wrapper.get(key)
-			if wrapper:
-				if wrapper.blob:
-					blobstore.delete(wrapper.blob.key())
-				else: self.response.out.write('No blob in wrapper')
-				db.delete(wrapper)
-				self.redirect('/')
-			else: self.response.out.write('No wrapper for key %s' % key)
-		except CapabilityDisabledError:
-			self.response.out.write('Deleting disabled')
+class Guestbook(webapp2.RequestHandler):
+    def post(self):
+        self.response.write('<html><body>You wrote:<pre>')
+        self.response.write(cgi.escape(self.request.get('content')))
+        self.response.write('</pre></body></html>')
 
-class MainHandler(webapp2.RequestHandler):
-	def get(self):
-		if users.get_current_user():
-			loginout_url = users.create_logout_url('/')
-		else:
-			loginout_url = users.create_login_url('/')
-		values = {
-			'user' : users.get_current_user(),
-			'users' : users,
-			'upload_url' : blobstore.create_upload_url('/upload'),
-			'wrappers' : Wrapper.all(),
-		}
-		path = os.path.join(os.path.dirname(__file__), 'index.html')
-		self.response.out.write(template.render(path, values))
-
-class AccountHandler(webapp2.RequestHandler):
-	def get(self):
-		if users.get_current_user():
-			self.redirect(users.create_logout_url('/'))
-		else:
-			self.redirect(users.create_login_url('/'))
-
-app = webapp2.WSGIApplication([
-  ('/', MainHandler),
-  ('/account', AccountHandler),
-  ('/upload', UploadHandler),
-  ('/serve/([^/]+)?', ServeHandler),
-  ('/delete', DeleteHandler),
-  ], debug=True)
+application = webapp2.WSGIApplication([
+    ('/', MainPage),
+    ('/sign', Guestbook),
+], debug=True)
