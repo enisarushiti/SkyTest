@@ -56,7 +56,7 @@ class MainHandler(webapp2.RequestHandler):
 			'upload_url' : blobstore.create_upload_url('/upload'),
 			'wrappers' : Wrapper.all(),
 		}
-		path = os.path.join(os.path.dirname(__file__), 'index.html')
+		path = os.path.join(os.path.dirname(__file__), 'main.html')
 		self.response.out.write(template.render(path, values))
 
 class AccountHandler(webapp2.RequestHandler):
