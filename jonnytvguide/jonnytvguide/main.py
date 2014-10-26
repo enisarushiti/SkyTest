@@ -1,7 +1,12 @@
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
+import cgi
+from google.appengine.api import users
+import webapp2
+from google.appengine.ext.webapp import template
 
-class IndexHandler(webapp.RequestHandler):
+
+
+
+class MainPage(webapp2.RequestHandler):
     def get(self):
         if self.request.url.endswith('/'):
             path = '%sindex.html'%self.request.url
@@ -11,10 +16,13 @@ class IndexHandler(webapp.RequestHandler):
     def post(self):
         self.get()
 
-application = webapp.WSGIApplication([('/.*', IndexHandler)], debug=True)
+class Guestbook(webapp2.RequestHandler):
+    def post(self):
+        self.response.write('<html><body>You wrote:<pre>')
+        self.response.write(cgi.escape(self.request.get('content')))
+        self.response.write('</pre></body></html>')
 
-def main():
-    run_wsgi_app(application)
-
-if __name__ == "__main__":
-    main()
+application = webapp2.WSGIApplication([
+    ('/', MainPage),
+    ('/sign', Guestbook),
+], debug=True)
