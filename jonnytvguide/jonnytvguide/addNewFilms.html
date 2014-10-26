@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB"> 
+
+ <head>
+      <meta charset="utf-8">
+      <title>SKY TV GUIDE</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="main.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="getForm.js"></script>
+  </head>
+<body id="main">
+    <h3>Enter Film Information</h3>
+    <form action="javascript:getFormXml()">
+        <input type="radio" name="actor" value="sean_channel" checked="checked"/>Sean Connery<br/>
+        <input type="radio" name="actor" value="george_channel"/>George Lazenby<br/>
+        <input type="radio" name="actor" value="roger_channel"/>Roger Moore<br/>
+        <input type="radio" name="actor" value="timothy_channel"/>Timothy Dalton<br/>
+        <input type="radio" name="actor" value="pierce_channel"/>Pierce Brosnan<br/>
+        <input type="radio" name="actor" value="daniel_channel"/>Daniel Craig<br/>
+        Film Name: <input type="text" name="name"/><br/>
+        Start Time: <input type="text" name="start_time"/><br/>
+        End Time:   <input type="text" name="end_time"/><br/>
+         <hr/>
+        <input name="submit" type="submit" value="Add"/> 
+        <input type="button" value="Send" onclick="sendDoc();" />
+    </form> 
+    <div id="filmTable"></div>
+
+</body>
+
+
+</body>
+</html>

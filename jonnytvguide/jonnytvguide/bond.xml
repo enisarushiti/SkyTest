@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <movie_data>
-<title>movie data</title>
+	<title>movie data</title>
 	<movie id="1">
 		<sean_channel>
 			<name>Dr No</name>
@@ -29,7 +29,7 @@
 			<end_time>1.30pm</end_time>
 		</sean_channel>
 	</movie>
-	<movie id="5">
+	<movie>
 		<timothy_channel>
 			<name>Octopussy</name>
 			<start_time>1.00pm</start_time>
