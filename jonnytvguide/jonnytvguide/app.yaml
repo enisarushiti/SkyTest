@@ -13,4 +13,4 @@ handlers:
   upload: index.html
 
 - url: /.*
-  script: main.py
+  script: main.application

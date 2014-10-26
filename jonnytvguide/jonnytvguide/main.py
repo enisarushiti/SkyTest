@@ -3,9 +3,6 @@ from google.appengine.api import users
 import webapp2
 from google.appengine.ext.webapp import template
 
-
-
-
 class MainPage(webapp2.RequestHandler):
     def get(self):
         if self.request.url.endswith('/'):
