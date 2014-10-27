@@ -1,4 +1,4 @@
-function fillGuide(){
+
 xmlhttp=new XMLHttpRequest();
 xmlhttp.open("GET","bond.xml",false);
 xmlhttp.send();
@@ -9,10 +9,6 @@ var x=xmlDoc.getElementsByTagName("movie");
 var channels = ["sean_channel", "roger_channel", "roger_channel", "george_channel", "timothy_channel", "pierce_channel", "daniel_channel"];
 var channelHasFilm = {};
 console.log(x);
-
-for (i=0;i<x.length;i++){
-  $('#'+channels[i]).empty();
-}
 for (i=0;i<x.length;i++)
   { 
     var channel = x[i].firstElementChild.localName;  
@@ -24,7 +20,10 @@ for (i=0;i<x.length;i++)
     var endTimeInt = returnIntTime(endTime);
     var width = ((endTimeInt - startTimeInt)/15)*100;
     var margLeft = ((1/30)*100)+(1/15)*(startTimeInt-9)*100;
-
+    console.log(startTime);
+    console.log(endTime);
+    console.log(filmName);
+    console.log(margLeft);
 
     $('#'+channel).append("<div id = \"" + filmName + "\" class = \"film box\" style=\"width:" + width + "%; margin-left:" + margLeft + "%;\">"+ filmName + "</div>");
   }
@@ -34,7 +33,8 @@ for(i=0; i<channels.length; i++){
     $('#'+channels[i]).append("<div class = \"film box empty\" style=\"width:100%; border:0px;  margin-left:-30%;\">No Programmes Avaliable</div>");
   }
 }
-}
+
+
 
 
 
@@ -71,19 +71,20 @@ $('.scroll.right').click(function (event) {
     horizontalNavigation(leftMov, event, 200);
 });
 
-function addClickableToFilm(){
+
 $('.film:not(.empty)').click(function (event) {
         console.log("film clicked on");
-       $('#horizonRecord').css('visibility','visible');
+       $('#horizon').css('visibility','visible');
        $('#popUpBox').css('display','block');
        $('#popUpText').empty();
        $('#popUpText').append("<p style=\"color:black\">"+"The James Bond Movie "+this.id+" is set to be recorded</p>");
 });
-}
+
+
 
 $('#close').click(function (event) {
        var currentPos = $("body").scrollLeft();
-        $('#horizonRecord').css('visibility','hidden');
+        $('#horizon').css('visibility','hidden');
        $('#popUpBox').css('display','none');
        horizontalNavigation(currentPos, event, 0);
 });
@@ -98,30 +99,16 @@ $('.scroll').hover(function() {
 
 
  $('#channel').click(function SelectName() {
-       $('#horizonUpload').css('visibility','visible');
-       $('#popUpload').css('display','block');
+        var popup = window.open("uploadXML.html", "Popup", "width=500,height=600");
+        popup.focus();
+        window.somefunction = function(g){
         fillGuide();
-        addClickableToFilm();
-
+}
 });
 
-$('#closeUpload').click(function (event) {
-       var currentPos = $("body").scrollLeft();
-        $('#horizonUpload').css('visibility','hidden');
-       $('#popUpload').css('display','none');
-       horizontalNavigation(currentPos, event, 0);
-});
 
 
 $( document ).ready(function() {
-  var channels = ["sean_channel", "roger_channel", "roger_channel", "george_channel", "timothy_channel", "pierce_channel", "daniel_channel"];
-  for(i=0; i<channels.length; i++){
-      $('#'+channels[i]).append("<div class = \"film box empty\" style=\"width:100%; border:0px;  margin-left:-30%;\">No Programmes Avaliable</div>");
-  }
+
 });
-
-
-
-
-
 
