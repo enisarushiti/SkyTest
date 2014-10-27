@@ -29,9 +29,14 @@
             <div class = "horizon" id = "horizonUpload">
                 <div id="popUpload" class="modal_content">
                      <p style = "color:black; font-size:30px">Upload Guide</p>
-                        <form><input type="file" name="img"/></form>:
+                        <br><br><br>
+                       <form action="upload.php" method="post" enctype="multipart/form-data">
+                          Please choose a file: <input type="file" name="uploadFile"><br>
+                          <input type="submit" value="Upload File">
+                        </form>
                         <div id="popUpText"> </div>
-                        <a href = "" id="closeUpload">Close [X]</a><br>
+                        <input type="button" id = "closeUpload" value="Close" />
+                         <input type="button" value="Upload" />
                 </div>
             </div>
 

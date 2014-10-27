@@ -10,7 +10,7 @@ var channels = ["sean_channel", "roger_channel", "roger_channel", "george_channe
 var channelHasFilm = {};
 console.log(x);
 
-for (i=0;i<x.length;i++){
+for (i=0;i<channels.length;i++){
   $('#'+channels[i]).empty();
 }
 for (i=0;i<x.length;i++)
