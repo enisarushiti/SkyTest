@@ -8,7 +8,10 @@ handlers:
 - url: /stylesheets
   static_dir: stylesheets
 
-handlers:
+- url: /(.*\.(gif|png|jpg|ico|swf|xml))
+  static_files: \1
+  upload: (.*\.(gif|png|jpg|ico|swf|xml))
+
 - url: /js
   static_dir: js
 
@@ -20,3 +23,7 @@ libraries:
   version: latest
 - name: jinja2
   version: latest
+
+
+
+
